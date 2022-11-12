@@ -1,27 +1,28 @@
 const Singleton = (function () {
-    
-    let instance;
+  let instance;
 
-    function createInstance() {
-        return new Object('I am the instance');
-    }
+  function createInstance() {
+    return new Object("I am the instance");
+  }
 
-    return {
-        getInstance() {
-            if (!instance) {
-                instance = createInstance();
-            }
-            return instance;
-        }
-    };
+  return {
+    getInstance() {
+      if (!instance) {
+        instance = createInstance();
+      }
+      return instance;
+    },
+  };
 })();
 
 function main() {
+  // problemas de singleton es dificil de testear
+  // no se puede trastrear de donde vienen los cambios de manera facil
 
-    const instance1 = Singleton.getInstance();
-    const instance2 = Singleton.getInstance();
+  const instance1 = Singleton.getInstance();
+  const instance2 = Singleton.getInstance();
 
-    console.log('Misma instancia? ', (instance1 === instance2));
+  console.log("Misma instancia? ", instance1 === instance2);
 }
 
 main();
